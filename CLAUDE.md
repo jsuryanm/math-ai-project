@@ -14,11 +14,14 @@ Group project on OpenFlights data (`data/*.dat`). Descriptive graph analysis onl
 ## Key results
 Avg path 4.10 hops, diameter 13, radius 7, avg clustering 0.487, transitivity 0.248 (random graph: ~0.003). 8 components.
 
-## Run
-Needs Python 3 with `networkx pandas matplotlib numpy nbformat nbconvert ipykernel`. Use a venv (system pip is PEP 668 locked).
-Re-execute: `jupyter nbconvert --to notebook --execute --inplace notebooks/04_*.ipynb` (about 1 min; exact all-pairs BFS).
+## Run (uv-managed env)
+Env is `.venv`, deps in `pyproject.toml`/`uv.lock`. Never use system pip.
+- Setup: `uv sync`
+- Add dep: `uv add <pkg>` (commit `pyproject.toml` and `uv.lock`)
+- Re-execute: `uv run jupyter nbconvert --to notebook --execute --inplace notebooks/04_*.ipynb` (about 1 min; exact all-pairs BFS)
 
 ## Conventions
+- Graph visuals use NetworkX drawing (`draw_networkx_*`); world map uses (lon, lat) as positions.
 - Paths in the notebook are relative to `notebooks/` (`../data/`).
 - Every plot gets a detailed reading plus a one-line **Brief**.
 - Unlabeled airports in `airports.dat` lack city/country; coordinates cover 3,262 of 3,425 nodes.
