@@ -23,7 +23,7 @@ The data can be accessed via this link: https://openflights.org/data.php. "As of
 |---|---|
 | `data/routes.dat` | Main analysis input. Route records include airline, source and destination airports, codeshare, stops, and equipment. The graph is constructed from source-destination airport pairs. |
 | `data/airports.dat` | Used to look up airport names and coordinates, especially for the global route map. The graph includes airports appearing in route records, not every row in this file. |
-| `data/airlines.dat` | **Not in this repo** (download from OpenFlights); not analyzed. Could provide readable airline names or enable carrier-specific comparisons. |
+| `data/airlines.dat` | Present but not analyzed. Could provide readable airline names or enable carrier-specific comparisons. |
 | `data/countries.dat` | Present but not analyzed. Could support geographic labels or country-level grouping. |
 | `data/planes.dat` | Present but not analyzed. Aircraft codes appear in route records, but the notebook does not study aircraft types. |
 
@@ -103,7 +103,7 @@ Before relying on numeric results or making recommendations, the group should re
 
 | Task | Notebook | Status |
 |---|---|---|
-| 1. Context and data | `notebooks/01_context_and_data.ipynb` | Drafted; see known issues below |
+| 1. Context and data | `notebooks/01_context_and_data.ipynb` | Complete, executed |
 | 4. Connectivity and graph properties | `notebooks/04_connectivity_and_graph_properties.ipynb` | Complete, executed |
 | 2, 3, 5, 6 | not yet added | Pending |
 
@@ -119,7 +119,4 @@ Notebooks read data from `../data/` (relative to `notebooks/`). Graph figures ar
 
 **Task 4 headline results** (giant component, undirected simple graph, 3,425 airports and 19,256 edges): 8 connected components, giant component 99.2% of airports, average path length 4.10 hops, diameter 13, radius 7, average clustering 0.487 versus about 0.003 for a random graph of the same size. Distance is route hops, not kilometres or travel time.
 
-**Known issues in `01_context_and_data.ipynb`:**
-- It reads `data/` rather than `../data/`, so it only runs from the repo root.
-- It loads `airlines.dat`, which is not in `data/`.
-- The install cell contains `pip install plotly` without `!` or `%`, a syntax error; `plotly` is also not yet in `pyproject.toml`.
+Notebook 1 runs end to end from `notebooks/` (verified with `nbconvert --execute`). It writes `fig_p1_*.png` and `route_globe.html` next to itself; both are gitignored.
