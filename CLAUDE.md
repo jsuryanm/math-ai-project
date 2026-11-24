@@ -23,6 +23,6 @@ Env is `.venv`, deps in `pyproject.toml`/`uv.lock`. Never use system pip.
 ## Conventions
 - Graph visuals use NetworkX drawing (`draw_networkx_*`); world map uses (lon, lat) as positions.
 - Paths in the notebook are relative to `notebooks/` (`../data/`).
-- Every plot gets a detailed reading plus a one-line **Brief**.
+- No per-plot "Reading"/"Brief" cells. Findings go in one closing **Graph analysis** section (3-4 points).
 - Unlabeled airports in `airports.dat` lack city/country; coordinates cover 3,262 of 3,425 nodes.
 - Keep changes minimal; state assumptions explicitly.
